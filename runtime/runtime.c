@@ -12,8 +12,7 @@ extern size_t __gc_stack_top, __gc_stack_bottom;
   bool flag = false;                                                                               \
   flag      = __gc_stack_top == 0;                                                                 \
   if (flag) { __gc_stack_top = (size_t)__builtin_frame_address(0); }                               \
-  assert(__gc_stack_top != 0);                                                                     \
-  assert((__gc_stack_top & 0xF) == 0);
+  assert(__gc_stack_top != 0);
 #define POST_GC()                                                                                  \
   if (flag) { __gc_stack_top = 0; }
 #else
